@@ -11,6 +11,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -122,4 +126,20 @@ button:focus-visible {
   margin: 10px;
   padding: 25px;
   
+}
+
+.login {
+  background-color: rgb(45, 39, 57);
+  padding: 20px;
+}
+
+.register {
+  background-color: rgb(45, 39, 57);
+  padding: 20px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
