@@ -1,25 +1,24 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import React from 'react';
 
-function CardPizza({ name, price, ingredients, img }) {
+const CardPizza = ({ pizza }) => {
   return (
-    <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={img} className="pizzas" />
-        <Card.Body>
-          <Card.Title> Pizza {name} </Card.Title>
-          <Card.Text>Ingredientes: <br /> <br /> {ingredients.join(", ")}</Card.Text>
-          <div className="cardabajo">
-          <Card.Text style={{fontSize:'25px', fontWeight:'400'}}>Precio: {price}</Card.Text>
-          <div className="botones">
-            <Button variant="primary"><i class="bi bi-eye"> </i>Ver más</Button>
-            <Button variant="primary"><i class="bi bi-cart"> </i>Añadir</Button>
-          </div></div>
-        </Card.Body>
-      </Card>
-    </>
+    <div className="col-md-4 mb-4">
+      <div className="card h-100">
+        <img src={pizza.img} alt={pizza.name} className="card-img-top" />
+        <div className="card-body">
+          <h5 className="card-title">{pizza.name}</h5>
+          <p className="card-text">{pizza.desc}</p>
+          <ul>
+            {pizza.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+          <p className="card-text">Precio: ${pizza.price}</p>
+          <button className="btn btn-primary">Añadir al carrito</button>
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
 export default CardPizza;

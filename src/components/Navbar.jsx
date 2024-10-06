@@ -9,26 +9,23 @@ function Navbar() {
     <div className="Navbar">
       <div className="info">
         <h4>Pizzería mamma Mia!</h4>
-        <Button>
-          {" "}
-          <i class="bi bi-pizza"></i>
+        <Button variant="secondary">
+          <i className="bi bi-pizza"></i>
           Home
         </Button>
-        <Button>
-          {" "}
+        <Button variant="secondary">
           <i
             className={token === true ? "bi bi-lock-fill" : "bi bi-unlock"}
           ></i>{" "}
           Login
         </Button>
-        <Button>
-          <i class="bi bi-key"> </i>
+        <Button variant="secondary">
+          <i className="bi bi-key"> </i>
           Register
         </Button>
       </div>
-      <Button>
-        {" "}
-        <i class="bi bi-cart"> </i>Total: $25.000
+      <Button variant="secondary">
+        <i className="bi bi-cart"></i> Total: ${total.toLocaleString()}
       </Button>
     </div>
   );
