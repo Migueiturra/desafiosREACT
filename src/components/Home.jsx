@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import CardPizza from "./CardPizza";
-import { pizzas } from "./data/pizzas";
 
 function Home() {
+
+  const [pizzas, setPizzas] = useState([]);
+
+  useEffect(() => {
+    const fetchPizzas = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/pizzas");
+        const data = await response.json();
+        setPizzas(data);
+      } catch (error) {
+        console.error("Error al cargar las pizzas:", error);
+      }
+    };
+
+    fetchPizzas();
+  }, []);
+
   return (
     <div className="container">
       <h1 className="text-center my-4">Nuestras Pizzas</h1>
