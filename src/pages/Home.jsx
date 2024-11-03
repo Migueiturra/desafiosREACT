@@ -1,10 +1,9 @@
 /* import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import CardPizza from "./CardPizza";
+import CardPizza from "../components/CardPizza";
 
 function Home() {
-
   const [pizzas, setPizzas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPizzas = async () => {
@@ -14,18 +13,26 @@ function Home() {
         setPizzas(data);
       } catch (error) {
         console.error("Error al cargar las pizzas:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchPizzas();
   }, []);
 
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
+
   return (
     <div className="container">
       <h1 className="text-center my-4">Nuestras Pizzas</h1>
       <div className="row">
         {pizzas.map((pizza) => (
-          <CardPizza key={pizza.id} pizza={pizza} />
+          <div className="col-md-4 mb-4" key={pizza.id}>
+            <CardPizza pizza={pizza} />
+          </div>
         ))}
       </div>
     </div>
@@ -77,3 +84,4 @@ function Home() {
 }
 
 export default Home;
+
